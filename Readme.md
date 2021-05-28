@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг»
 
 * Студент: [Денис  Белокопытов](https://up.htmlacademy.ru/javascript/23/user/1751703).
-* Наставник: `Владислав Зубко`.
+* Наставник: [Владислав Зубко](https://htmlacademy.ru/profile/whatislove).
 
 ---
 
