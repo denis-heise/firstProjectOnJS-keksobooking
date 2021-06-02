@@ -11,7 +11,6 @@ function randomInteger(min, max) {
 }
 // числа к примеру
 randomInteger(0, 55);
-
 //Источник: https://learn.javascript.ru/task/random-int-min-max
 
 
@@ -27,5 +26,4 @@ function getRandomArbitrary(min, max) {
 }
 // числа к примеру
 getRandomArbitrary(12, 13);
-
 // Источник https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/random
