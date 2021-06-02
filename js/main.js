@@ -10,7 +10,7 @@ function randomInteger(min, max) {
   return('Задан неверный диапазон! Укажите другие числа.');
 }
 // числа к примеру
-randomInteger(0, 55);
+randomInteger(20, 55);
 //Источник: https://learn.javascript.ru/task/random-int-min-max
 
 
@@ -25,5 +25,5 @@ function getRandomArbitrary(min, max) {
   return('Задан неверный диапазон! Укажите другие числа.');
 }
 // числа к примеру
-getRandomArbitrary(12, 13);
+getRandomArbitrary(12, 118);
 // Источник https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/random
