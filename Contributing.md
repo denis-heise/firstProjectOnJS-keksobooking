@@ -15,7 +15,7 @@
 git checkout master
 
 # Заберите изменения из репозитория Академии¹
-git pull academy master
+  git pull academy master
 
 # Отправьте изменения в ваш форк на Гитхабе
 git push
