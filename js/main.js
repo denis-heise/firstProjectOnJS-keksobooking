@@ -15,15 +15,14 @@ randomInteger(20, 55);
 
 
 //Функция, возвращающая случайное число с плавающей точкой из переданного диапазона включительно.
-function getRandomArbitrary(min, max) {
-  if (min >= 0 && max > 0 && min < max) {
-    if (min === max) {
-      return Math.round(min);
-    }
-    return Math.random() * (max - min) + min;
+function getRandomArbitrary(min, max, maxDigits = 0) {
+  if (min > max || min < 0 || max <= 0) {
+    return ('Задан неверный диапазон! Укажите другие числа.');
   }
-  return('Задан неверный диапазон! Укажите другие числа.');
+  const digitsDegree = 10 ** maxDigits;
+  return ~~((Math.random() * (max - min) + min) * digitsDegree) / digitsDegree;
 }
 // числа к примеру
-getRandomArbitrary(12, 118);
+getRandomArbitrary(125, 212, 1);
 // Источник https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+// Ответ на счёт третьего аргумента получил https://qna.habr.com/q/999157
