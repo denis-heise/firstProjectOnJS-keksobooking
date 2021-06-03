@@ -18,11 +18,11 @@ randomInteger(20, 55);
 function getRandomArbitrary(min, max, digits) {
   if (min >= 0 && max > 0 && min <= max) {
     if (min === max) {
-      const dottedNumber = Math.round((max - min) + min);
-      return dottedNumber.toFixed(digits);
+      const dottedNumberFirst = Math.round((max - min) + min);
+      return dottedNumberFirst.toFixed(digits);
     }
-    const dottedNumber = Math.random() * (max - min) + min;
-    return dottedNumber.toFixed(digits);
+    const dottedNumberSecond = Math.random() * (max - min) + min;
+    return dottedNumberSecond.toFixed(digits);
   }
   return('Задан неверный диапазон! Укажите другие числа.');
 }
