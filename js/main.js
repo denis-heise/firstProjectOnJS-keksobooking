@@ -1,4 +1,4 @@
-function randomIntegerAuthor(min, max) {
+function getRandomIntegerAuthor (min, max) {
   if (min >= 0 && max > 0 && min <= max) {
     if (min === max) {
       return Math.round(min);
@@ -7,7 +7,7 @@ function randomIntegerAuthor(min, max) {
     return Math.round(rand);
   }
 }
-function getRandomArbitrary(min, max, digits) {
+function getRandomArbitrary (min, max, digits) {
   if (min >= 0 && max > 0 && min <= max) {
     if (min === max) {
       const dottedNumberFirst = Math.round((max - min) + min);
@@ -19,19 +19,19 @@ function getRandomArbitrary(min, max, digits) {
   return('Задан неверный диапазон! Укажите другие числа.');
 }
 
-const type = [
+const types = [
   'palace',
   'flat',
   'house',
   'bungalow',
   'hotel',
 ];
-const checkin = [
+const checkins = [
   '12:00',
   '13:00',
   '14:00',
 ];
-const checkout = [
+const checkouts = [
   '12:00',
   '13:00',
   '14:00',
@@ -53,12 +53,12 @@ const photos = [
 const getRandomItems = (items, count) => items.slice(0, count);
 
 const createOffer = () => {
-  const avatarNumber = randomIntegerAuthor(1, 9);
+  const avatarNumber = getRandomIntegerAuthor(1, 9);
   const locationLat = getRandomArbitrary(15, 70, 5);
   const locationLng = getRandomArbitrary(100, 180, 5);
-  const typeElement = randomIntegerAuthor(1, features.length - 1);
-  const checkinElement = randomIntegerAuthor(1, checkin.length - 1);
-  const checkoutElement = randomIntegerAuthor(1, checkout.length - 1);
+  const typeElement = getRandomIntegerAuthor(1, features.length - 1);
+  const checkinElement = getRandomIntegerAuthor(1, checkins.length - 1);
+  const checkoutElement = getRandomIntegerAuthor(1, checkouts.length - 1);
 
   return {
     author: {
@@ -68,15 +68,15 @@ const createOffer = () => {
     offer: {
       title: 'Offer',
       address: `${locationLat}, ${locationLng}`,
-      price: randomIntegerAuthor(400, 5000),
-      type: type[typeElement],
-      rooms: randomIntegerAuthor(1, 3),
-      guests: randomIntegerAuthor(1, 5),
-      checkin: checkin[checkinElement],
-      checkout: checkout[checkoutElement],
-      features: getRandomItems(features, randomIntegerAuthor(0, features.length - 1)),
+      price: getRandomIntegerAuthor(400, 5000),
+      type: types[typeElement],
+      rooms: getRandomIntegerAuthor(1, 3),
+      guests: getRandomIntegerAuthor(1, 5),
+      checkin: checkins[checkinElement],
+      checkout: checkouts[checkoutElement],
+      features: getRandomItems(features, getRandomIntegerAuthor(0, features.length - 1)),
       description: 'Очень комфортные комнаты по выгодным ценам',
-      photos: getRandomItems(photos, randomIntegerAuthor(0, photos.length - 1)),
+      photos: getRandomItems(photos, getRandomIntegerAuthor(0, photos.length - 1)),
     },
 
     location: {
@@ -86,7 +86,8 @@ const createOffer = () => {
   };
 };
 
-const offers = new Array(10).fill(null).map(() => createOffer());
-
-console.log(offers);
-
+const createOffers = (count) => {
+  const offers = new Array(count).fill(null).map(() => createOffer());
+  return offers;
+};
+createOffers(10);
