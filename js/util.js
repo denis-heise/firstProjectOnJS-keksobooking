@@ -1,4 +1,4 @@
-import {types, checkins, checkouts, features, photos} from './data';
+import {types, checkins, checkouts, features, photos} from './data.js';
 
 function getRandomInteger (min, max) {
   if (min >= 0 && max > 0 && min <= max) {
