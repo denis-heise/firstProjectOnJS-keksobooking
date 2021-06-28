@@ -1,2 +1,9 @@
 import {createOffers} from './util.js';
-createOffers(10);
+import {addItemToMap} from './template-card.js';
+
+const OFFER_FOR_POPUP_IDX = 0;
+
+const offers = createOffers(10);
+const offerForPopup = offers[OFFER_FOR_POPUP_IDX];
+
+addItemToMap(offerForPopup);
