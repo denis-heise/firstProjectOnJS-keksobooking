@@ -1,38 +1,23 @@
 // Перевод страницы в неактивное состояние
 // 1. Форма заполнения информации об объявлении
-const adForm = document.querySelector('.ad-form');
-const header = adForm.querySelector('.ad-form-header');
-const interactiveFormElements = adForm.querySelectorAll('.ad-form__element');
+const adFormNode = document.querySelector('.ad-form');
+const adFormFieldsetsNodes = adFormNode.querySelectorAll('fieldset');
 // 2. Форма с фильтрами
-const mapFilters = document.querySelector('.map__filters');
-const interactiveMapElements = mapFilters.querySelectorAll('.map__filter');
-const features = mapFilters.querySelector('.map__features');
+const mapFormNode = document.querySelector('.map__filters');
+const mapFormSelectsNodes = mapFormNode.querySelectorAll('.map__filter');
 
-// Функция для переключения состояния страницы (неактивное/активное)
-function isActive (flag) {
-  adForm.classList.toggle('ad-form--disabled');
-  mapFilters.classList.toggle('map__filters--disabled');
-  header.disabled = true;
-  interactiveFormElements.forEach((item) => {
-    item.disabled = true;
+const toggleNodesDisabled = (nodes, isDisabled) => {
+  nodes.forEach((item) => {
+    item.disabled = isDisabled;
   });
-  interactiveMapElements.forEach((item) => {
-    item.disabled = true;
-  });
-  features.disabled = true;
+};
 
-  if (flag === true) {
-    header.disabled = false;
-    interactiveFormElements.forEach((item) => {
-      item.disabled = false;
-    });
-    interactiveMapElements.forEach((item) => {
-      item.disabled = false;
-    });
-    features.disabled = false;
-    adForm.classList.toggle('ad-form--disabled');
-    mapFilters.classList.toggle('map__filters--disabled');
-  }
-}
+const togglePageStatus = (isActive) => {
+  adFormNode.classList.toggle('ad-form--disabled', !isActive);
+  mapFormNode.classList.toggle('ad-form--disabled', !isActive);
 
-export {isActive};
+  toggleNodesDisabled(adFormFieldsetsNodes, !isActive);
+  toggleNodesDisabled(mapFormSelectsNodes, !isActive);
+};
+
+export {togglePageStatus};
