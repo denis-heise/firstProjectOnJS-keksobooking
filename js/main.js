@@ -9,5 +9,4 @@ const offerForPopup = offers[OFFER_FOR_POPUP_IDX];
 
 addItemToMap(offerForPopup);
 
-const flag = true;
-togglePageStatus(flag);
+togglePageStatus(true);
