@@ -1,4 +1,4 @@
-import {offerTypeToReadable} from './template-card.js';
+import {offerTypeToPrice} from './template-card.js';
 // СОСТОЯНИЕ СТРАНИЦЫ (неактивное/акивное)
 const adForm = document.querySelector('.ad-form');
 const adFormFieldsetsNodes = adForm.querySelectorAll('fieldset');
@@ -18,18 +18,17 @@ const togglePageStatus = (isActive) => {
 };
 
 // ВАЛИДАЦИЯ
-const priceOfHouse = adForm.querySelector('#price');
-const typeOfHouse = adForm.querySelector('#type');
+const priceNode = adForm.querySelector('#price');
+const typeNode = adForm.querySelector('#type');
 const timeInNode = adForm.querySelector('#timein');
 const timeOutNode = adForm.querySelector('#timeout');
-const roomNumber = adForm.querySelector('#room_number');
-const capacity = adForm.querySelector('#capacity');
-const capacityOption = capacity.querySelectorAll('option');
-const ROOM_CAPACITY = {
-  '1': ['1'],
-  '2': ['1', '2'],
-  '3': ['1', '2', '3'],
-  '100': ['0'],
+const roomNumberNode = adForm.querySelector('#room_number');
+const capacityNode = adForm.querySelector('#capacity');
+const roomsToCapacities = {
+  1: [1],
+  2: [1, 2],
+  3: [1, 2, 3],
+  100: [0],
 };
 
 adForm.addEventListener('change', (evt) => {
@@ -43,19 +42,20 @@ adForm.addEventListener('change', (evt) => {
       break;
     }
     // Валидация цены за ночь
-    case typeOfHouse.name:
-    case priceOfHouse.name:
-      priceOfHouse.placeholder = offerTypeToReadable[typeOfHouse.value] [1];
-      priceOfHouse.min = offerTypeToReadable[typeOfHouse.value] [1];
-      priceOfHouse.value < priceOfHouse.getAttribute('placeholder');
+    case typeNode.name: {
+      const price = offerTypeToPrice[value];
+      priceNode.min = price;
+      priceNode.placeholder = price;
       break;
+    }
     // Валидация количества комнат и мест
-    case roomNumber.name:
-      capacityOption.forEach((item) => {
-        item.selected = (ROOM_CAPACITY[roomNumber.value] [0] === item.value);
-        item.hidden = !(ROOM_CAPACITY[roomNumber.value].indexOf(item.value) >= 0);
-      });
+    case roomNumberNode.name:
+    case capacityNode.name: {
+      const roomNumber = roomNumberNode.value;
+      const capacityNumber = parseInt(capacityNode.value, 10);
+      capacityNode.setCustomValidity(roomsToCapacities[roomNumber].includes(capacityNumber) ? '' : 'Количество гостей не подходит количеству комнат');
       break;
+    }
   }
 });
 
