@@ -1,9 +1,9 @@
 const offerTypeToReadable = {
-  'flat': 'Квартира',
-  'bungalow': 'Бунгало',
-  'house': 'Дом',
-  'palace': 'Дворец',
-  'hotel': 'Отель',
+  'flat': ['Квартира', 1000],
+  'bungalow': ['Бунгало', 0],
+  'house': ['Дом', 5000],
+  'palace': ['Дворец', 10000],
+  'hotel': ['Отель', 3000],
 };
 const templateFragment = document.querySelector('#card').content;
 const template = templateFragment.querySelector('.popup');
@@ -63,7 +63,7 @@ function replaceType (type) {
   const popupType =  advertElement.querySelector('.popup__type');
   if (type.length > 0) {
     popupType.classList.remove('hidden');
-    popupType.textContent = offerTypeToReadable[type];
+    popupType.textContent = offerTypeToReadable[type] [0];
   }
 }
 
@@ -129,4 +129,4 @@ function addItemToMap (offerForPopup) {
   mapCanvas.append(fragment);
 }
 
-export {addItemToMap};
+export {addItemToMap, offerTypeToReadable};
