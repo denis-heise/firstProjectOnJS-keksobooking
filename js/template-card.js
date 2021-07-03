@@ -1,9 +1,23 @@
+const offerType = {
+  BUNGALOW: 'bungalow',
+  FLAT: 'flat',
+  HOTEL: 'hotel',
+  HOUSE: 'house',
+  PALACE: 'palace',
+};
+const offerTypeToPrice = {
+  [offerType.BUNGALOW]: 0,
+  [offerType.FLAT]: 1000,
+  [offerType.HOTEL]: 3000,
+  [offerType.HOUSE]: 5000,
+  [offerType.PALACE]: 10000,
+};
 const offerTypeToReadable = {
-  'flat': 'Квартира',
-  'bungalow': 'Бунгало',
-  'house': 'Дом',
-  'palace': 'Дворец',
-  'hotel': 'Отель',
+  [offerType.BUNGALOW]: 'Бунгало',
+  [offerType.FLAT]: 'Квартира',
+  [offerType.HOTEL]: 'Отель',
+  [offerType.HOUSE]: 'Дом',
+  [offerType.PALACE]: 'Дворец',
 };
 const templateFragment = document.querySelector('#card').content;
 const template = templateFragment.querySelector('.popup');
@@ -129,4 +143,4 @@ function addItemToMap (offerForPopup) {
   mapCanvas.append(fragment);
 }
 
-export {addItemToMap};
+export {addItemToMap, offerTypeToPrice};
