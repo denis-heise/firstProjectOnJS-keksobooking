@@ -67,11 +67,11 @@ function addItemToMap (offerForPopup) {
     if (features.length > 0) {
       popupFeatures.classList.remove('hidden');
     }
-    for (let ind = 0; ind < features.length; ind++) {
+    features.map((item) => {
       const feature = document.createElement('li');
-      feature.classList.add('popup__feature', `popup__feature--${features[ind]}`);
-      popupFeatures.appendChild(feature);
-    }
+      feature.classList.add('popup__feature', `popup__feature--${item}`);
+      return popupFeatures.appendChild(feature);
+    });
   }
 
   function replaceType (type) {
@@ -106,11 +106,11 @@ function addItemToMap (offerForPopup) {
       popupPhotos.classList.remove('hidden');
       imgPopupPhotos.classList.remove('hidden');
     }
-    for(let ind = 0, img; ind <= photos.length -1; ind++) {
-      img = imgPopupPhotos.cloneNode();
+    photos.forEach( (item, ind) => {
+      const img = imgPopupPhotos.cloneNode();
       img.src = photos[ind];
       popupPhotos.appendChild(img);
-    }
+    });
   }
 
   function replaceAvatar (avatar) {
