@@ -67,13 +67,10 @@ function addItemToMap (offerForPopup) {
     if (features.length > 0) {
       popupFeatures.classList.remove('hidden');
     }
-    const popupFeature = features.map((item) => {
+    features.forEach((item) => {
       const feature = document.createElement('li');
       feature.classList.add('popup__feature', `popup__feature--${item}`);
-      return feature;
-    });
-    popupFeature.forEach((element) => {
-      popupFeatures.appendChild(element);
+      popupFeatures.appendChild(feature);
     });
   }
 
@@ -109,7 +106,7 @@ function addItemToMap (offerForPopup) {
       popupPhotos.classList.remove('hidden');
       imgPopupPhotos.classList.remove('hidden');
     }
-    photos.map( (item, ind) => {
+    photos.forEach( (item, ind) => {
       const img = imgPopupPhotos.cloneNode();
       img.src = photos[ind];
       popupPhotos.appendChild(img);
