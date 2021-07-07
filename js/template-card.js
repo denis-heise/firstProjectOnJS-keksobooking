@@ -61,9 +61,7 @@ function addItemToMap (offerForPopup) {
 
   function replaceFeatures (features) {
     const popupFeatures = advertElement.querySelector('.popup__features');
-    while (popupFeatures.firstChild) {
-      popupFeatures.removeChild(popupFeatures.firstChild);
-    }
+    popupFeatures.innerHTML = '';
     if (features.length > 0) {
       popupFeatures.classList.remove('hidden');
     }
@@ -101,7 +99,7 @@ function addItemToMap (offerForPopup) {
   function replacePhotos (photos) {
     const popupPhotos = advertElement.querySelector('.popup__photos');
     const imgPopupPhotos = advertElement.querySelector('.popup__photo');
-    popupPhotos.textContent = '';
+    popupPhotos.innerHTML = '';
     if (photos.length > 0) {
       popupPhotos.classList.remove('hidden');
       imgPopupPhotos.classList.remove('hidden');
