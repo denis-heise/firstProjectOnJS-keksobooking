@@ -25,6 +25,7 @@ function addItemToMap (offerForPopup) {
   const template = templateFragment.querySelector('.popup');
   const advertElement = template.cloneNode(true);
   const fragment = document.createDocumentFragment();
+  const { author, offer } = offerForPopup;
 
   function replaceTitle (title) {
     const popupTitle = advertElement.querySelector('.popup__title');
@@ -45,7 +46,7 @@ function addItemToMap (offerForPopup) {
 
   function replaceDdscription (description)  {
     const popupDescription = advertElement.querySelector('.popup__description');
-    if (description.length > 0) {
+    if (description !== '') {
       popupDescription.classList.remove('hidden');
       popupDescription.textContent = description;
     }
@@ -62,19 +63,21 @@ function addItemToMap (offerForPopup) {
   function replaceFeatures (features) {
     const popupFeatures = advertElement.querySelector('.popup__features');
     popupFeatures.innerHTML = '';
-    if (features.length > 0) {
+    if (features !== '') {
       popupFeatures.classList.remove('hidden');
     }
-    features.forEach((item) => {
-      const feature = document.createElement('li');
-      feature.classList.add('popup__feature', `popup__feature--${item}`);
-      popupFeatures.appendChild(feature);
-    });
+    if (features) {
+      features.forEach((item) => {
+        const feature = document.createElement('li');
+        feature.classList.add('popup__feature', `popup__feature--${item}`);
+        popupFeatures.appendChild(feature);
+      });
+    }
   }
 
   function replaceType (type) {
     const popupType =  advertElement.querySelector('.popup__type');
-    if (type.length > 0) {
+    if (type !== '') {
       popupType.classList.remove('hidden');
       popupType.textContent = offerTypeToReadable[type];
     }
@@ -90,7 +93,7 @@ function addItemToMap (offerForPopup) {
 
   function replaceCheckinAndCheckout (checkin, checkout) {
     const popupTime = advertElement.querySelector('.popup__text--time');
-    if (checkin.length > 0 && checkout.length > 0) {
+    if (checkin  !== '' && checkout !== '') {
       popupTime.classList.remove('hidden');
       popupTime.textContent = `Заезд после ${checkin}, выезд до ${checkout}`;
     }
@@ -100,29 +103,31 @@ function addItemToMap (offerForPopup) {
     const popupPhotos = advertElement.querySelector('.popup__photos');
     const imgPopupPhotos = advertElement.querySelector('.popup__photo');
     popupPhotos.innerHTML = '';
-    if (photos.length > 0) {
+    if (photos !== '') {
       popupPhotos.classList.remove('hidden');
       imgPopupPhotos.classList.remove('hidden');
     }
-    photos.forEach( (item, ind) => {
-      const img = imgPopupPhotos.cloneNode();
-      img.src = photos[ind];
-      popupPhotos.appendChild(img);
-    });
+    if (photos) {
+      photos.forEach( (item, ind) => {
+        const img = imgPopupPhotos.cloneNode();
+        img.src = photos[ind];
+        popupPhotos.appendChild(img);
+      });
+    }
   }
 
   function replaceAvatar (avatar) {
     const popupAvatar = advertElement.querySelector('.popup__avatar');
-    if (avatar.length > 0) {
+    if (avatar !== '') {
       popupAvatar.classList.remove('hidden');
       popupAvatar.src = avatar;
     }
   }
+
   const childElements = advertElement.querySelectorAll('*');
   for (const childNode of childElements) {
     childNode.classList.add('hidden');
   }
-  const { author, offer } = offerForPopup;
 
   replaceAvatar(author.avatar);
   replaceAddress(offer.address);
