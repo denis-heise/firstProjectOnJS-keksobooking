@@ -1,10 +1,23 @@
 import {offerTypeToPrice} from './template-card.js';
-// СОСТОЯНИЕ СТРАНИЦЫ (неактивное/акивное)
+
 const adForm = document.querySelector('.ad-form');
 const adFormFieldsetsNodes = adForm.querySelectorAll('fieldset');
 const mapFilters = document.querySelector('.map__filters');
 const mapFormSelectsNodes = mapFilters.querySelectorAll('.map__filter');
+const priceNode = adForm.querySelector('#price');
+const typeNode = adForm.querySelector('#type');
+const timeInNode = adForm.querySelector('#timein');
+const timeOutNode = adForm.querySelector('#timeout');
+const roomNumberNode = adForm.querySelector('#room_number');
+const capacityNode = adForm.querySelector('#capacity');
+const roomsToCapacities = {
+  1: [1],
+  2: [1, 2],
+  3: [1, 2, 3],
+  100: [0],
+};
 
+// СОСТОЯНИЕ СТРАНИЦЫ (неактивное/акивное)
 const toggleNodesDisabled = (nodes, isDisabled) => {
   nodes.forEach((item) => {
     item.disabled = isDisabled;
@@ -18,18 +31,6 @@ const togglePageStatus = (isActive) => {
 };
 
 // ВАЛИДАЦИЯ
-const priceNode = adForm.querySelector('#price');
-const typeNode = adForm.querySelector('#type');
-const timeInNode = adForm.querySelector('#timein');
-const timeOutNode = adForm.querySelector('#timeout');
-const roomNumberNode = adForm.querySelector('#room_number');
-const capacityNode = adForm.querySelector('#capacity');
-const roomsToCapacities = {
-  1: [1],
-  2: [1, 2],
-  3: [1, 2, 3],
-  100: [0],
-};
 
 adForm.addEventListener('change', (evt) => {
   const { name, value } = evt.target;

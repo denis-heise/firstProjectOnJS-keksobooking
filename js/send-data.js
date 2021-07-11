@@ -1,4 +1,4 @@
-import {createErrorMesage} from './get-data.js';
+import {createErrorMesage, resetFilters} from './get-data.js';
 import {resetForm} from './map.js';
 
 const URL_SERVER = 'https://23.javascript.pages.academy/keksobooking';
@@ -30,6 +30,7 @@ const sendForm = (success) => {
       .catch(() => createErrorMesage());
   });
   resetForm(addForm, 'submit');
+  resetFilters(addForm, 'submit');
 };
 
 // Функции закрытия сообщения об успешной
@@ -67,4 +68,4 @@ function createSuccessMessage () {
 sendForm(createSuccessMessage);
 
 resetForm(resetButton, 'click');
-
+resetFilters(resetButton, 'click');

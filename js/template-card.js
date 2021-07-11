@@ -26,6 +26,7 @@ function addItemToMap (offerForPopup) {
   const advertElement = template.cloneNode(true);
   const fragment = document.createDocumentFragment();
   const { author, offer } = offerForPopup;
+  const childElements = advertElement.querySelectorAll('*');
 
   function replaceTitle (title) {
     const popupTitle = advertElement.querySelector('.popup__title');
@@ -124,7 +125,6 @@ function addItemToMap (offerForPopup) {
     }
   }
 
-  const childElements = advertElement.querySelectorAll('*');
   for (const childNode of childElements) {
     childNode.classList.add('hidden');
   }
