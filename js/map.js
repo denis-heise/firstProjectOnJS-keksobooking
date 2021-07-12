@@ -18,6 +18,7 @@ const ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">Op
 const MAIN_ICON_URL = './img/main-pin.svg';
 const SIMILAR_ICON_URL = './img/pin.svg';
 const RERENDER = 500;
+const DEFAULT_AVATAR = './img/muffin-grey.svg';
 
 const address = document.querySelector('#address');
 const title = document.querySelector('#title');
@@ -30,8 +31,8 @@ const capacity = document.querySelector('#capacity');
 const features = document.querySelectorAll('.features__checkbox');
 const type = document.querySelector('#type');
 const filters = document.querySelector('.map__filters');
+const previewAvatar = document.querySelector('.ad-form-header__preview img');
 let extractedData = [];
-
 // Перевожу старницу в неактивное состояние по умолчанию
 togglePageStatus(false);
 
@@ -130,6 +131,8 @@ const getSuccess = (data) => {
 // Возвращаю метку и все заполненные поля в изначальное состояние
 const resetForm = (reset, run) => {
   reset.addEventListener(run, (evt) => {
+    const containerPhotos = document.querySelector('.ad-form__photo-container');
+    const previewPhotos = containerPhotos.querySelectorAll('.ad-form__photo');
     evt.preventDefault();
     address.value = `${LAT_START}, ${LNG_START}`;
     mainPinMarker.setLatLng({
@@ -152,6 +155,14 @@ const resetForm = (reset, run) => {
     features.forEach((item) => {
       item.checked = false;
     });
+    previewAvatar.src = DEFAULT_AVATAR;
+
+    previewPhotos.forEach((item) => {
+      item.remove();
+    });
+    const divPhoto = document.createElement('div');
+    divPhoto.classList.add('ad-form__photo');
+    containerPhotos.appendChild(divPhoto);
   });
 };
 
