@@ -1,4 +1,5 @@
+
 import './get-data.js';
 import './send-data.js';
 import './filter.js';
-import './avatar-photos.js';
+import './avatar-photo.js';

@@ -19,7 +19,6 @@ const MAIN_ICON_URL = './img/main-pin.svg';
 const SIMILAR_ICON_URL = './img/pin.svg';
 const RERENDER = 500;
 const DEFAULT_AVATAR = './img/muffin-grey.svg';
-
 const address = document.querySelector('#address');
 const title = document.querySelector('#title');
 const price = document.querySelector('#price');
