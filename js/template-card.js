@@ -26,7 +26,7 @@ const fragment = document.createDocumentFragment();
 function addItemToMap (offerForPopup) {
   const { author, offer } = offerForPopup;
   const advertNode = templatePopupNode.cloneNode(true);
-  const childElementsNode = advertNode.querySelectorAll('*');
+  const childElementsNodes = advertNode.querySelectorAll('*');
   const popupTitleNode = advertNode.querySelector('.popup__title');
   const popupAddressNode = advertNode.querySelector('.popup__text--address');
   const popupDescriptionNode = advertNode.querySelector('.popup__description');
@@ -125,7 +125,7 @@ function addItemToMap (offerForPopup) {
     }
   }
 
-  for (const childNode of childElementsNode) {
+  for (const childNode of childElementsNodes) {
     childNode.classList.add('hidden');
   }
 

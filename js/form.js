@@ -1,9 +1,9 @@
 import {OfferTypeToPrice} from './template-card.js';
 
 const adFormNode = document.querySelector('.ad-form');
-const adFormFieldsetsNode = adFormNode.querySelectorAll('fieldset');
+const adFormFieldsetsNodes = adFormNode.querySelectorAll('fieldset');
 const mapFiltersNode = document.querySelector('.map__filters');
-const mapFormSelectsNode = mapFiltersNode.querySelectorAll('.map__filter');
+const mapFormSelectsNodes = mapFiltersNode.querySelectorAll('.map__filter');
 const priceNode = adFormNode.querySelector('#price');
 const typeNode = adFormNode.querySelector('#type');
 const timeInNode = adFormNode.querySelector('#timein');
@@ -26,8 +26,8 @@ const toggleNodesDisabled = (nodes, isDisabled) => {
 const togglePageStatus = (isActive) => {
   adFormNode.classList.toggle('ad-form--disabled', !isActive);
   mapFiltersNode.classList.toggle('ad-form--disabled', !isActive);
-  toggleNodesDisabled(adFormFieldsetsNode, !isActive);
-  toggleNodesDisabled(mapFormSelectsNode, !isActive);
+  toggleNodesDisabled(adFormFieldsetsNodes, !isActive);
+  toggleNodesDisabled(mapFormSelectsNodes, !isActive);
 };
 
 // ВАЛИДАЦИЯ

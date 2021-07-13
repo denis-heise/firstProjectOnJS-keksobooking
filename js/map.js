@@ -27,7 +27,7 @@ const timeinNode = document.querySelector('#timein');
 const timeoutNode = document.querySelector('#timeout');
 const roomNumberNode = document.querySelector('#room_number');
 const capacityNode = document.querySelector('#capacity');
-const featuresNode = document.querySelectorAll('.features__checkbox');
+const featuresNodes = document.querySelectorAll('.features__checkbox');
 const typeNode = document.querySelector('#type');
 const filtersNode = document.querySelector('.map__filters');
 const previewAvatarNode = document.querySelector('.ad-form-header__preview img');
@@ -151,7 +151,7 @@ const resetForm = (reset, run) => {
     capacityNode.value = '1';
     roomNumberNode.value = '1';
     typeNode.value = 'flat';
-    featuresNode.forEach((item) => {
+    featuresNodes.forEach((item) => {
       item.checked = false;
     });
     previewAvatarNode.src = DEFAULT_AVATAR;
