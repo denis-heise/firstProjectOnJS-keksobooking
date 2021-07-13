@@ -1,16 +1,16 @@
-import {offerTypeToPrice} from './template-card.js';
+import {OfferTypeToPrice} from './template-card.js';
 
-const adForm = document.querySelector('.ad-form');
-const adFormFieldsetsNodes = adForm.querySelectorAll('fieldset');
-const mapFilters = document.querySelector('.map__filters');
-const mapFormSelectsNodes = mapFilters.querySelectorAll('.map__filter');
-const priceNode = adForm.querySelector('#price');
-const typeNode = adForm.querySelector('#type');
-const timeInNode = adForm.querySelector('#timein');
-const timeOutNode = adForm.querySelector('#timeout');
-const roomNumberNode = adForm.querySelector('#room_number');
-const capacityNode = adForm.querySelector('#capacity');
-const roomsToCapacities = {
+const adFormNode = document.querySelector('.ad-form');
+const adFormFieldsetsNode = adFormNode.querySelectorAll('fieldset');
+const mapFiltersNode = document.querySelector('.map__filters');
+const mapFormSelectsNode = mapFiltersNode.querySelectorAll('.map__filter');
+const priceNode = adFormNode.querySelector('#price');
+const typeNode = adFormNode.querySelector('#type');
+const timeInNode = adFormNode.querySelector('#timein');
+const timeOutNode = adFormNode.querySelector('#timeout');
+const roomNumberNode = adFormNode.querySelector('#room_number');
+const capacityNode = adFormNode.querySelector('#capacity');
+const RoomsToCapacities = {
   1: [1],
   2: [1, 2],
   3: [1, 2, 3],
@@ -24,15 +24,15 @@ const toggleNodesDisabled = (nodes, isDisabled) => {
   });
 };
 const togglePageStatus = (isActive) => {
-  adForm.classList.toggle('ad-form--disabled', !isActive);
-  mapFilters.classList.toggle('ad-form--disabled', !isActive);
-  toggleNodesDisabled(adFormFieldsetsNodes, !isActive);
-  toggleNodesDisabled(mapFormSelectsNodes, !isActive);
+  adFormNode.classList.toggle('ad-form--disabled', !isActive);
+  mapFiltersNode.classList.toggle('ad-form--disabled', !isActive);
+  toggleNodesDisabled(adFormFieldsetsNode, !isActive);
+  toggleNodesDisabled(mapFormSelectsNode, !isActive);
 };
 
 // ВАЛИДАЦИЯ
 
-adForm.addEventListener('change', (evt) => {
+adFormNode.addEventListener('change', (evt) => {
   const { name, value } = evt.target;
   switch (name) {
     // Валидация времени заезда и выезда
@@ -44,7 +44,7 @@ adForm.addEventListener('change', (evt) => {
     }
     // Валидация цены за ночь
     case typeNode.name: {
-      const price = offerTypeToPrice[value];
+      const price = OfferTypeToPrice[value];
       priceNode.min = price;
       priceNode.placeholder = price;
       break;
@@ -54,7 +54,7 @@ adForm.addEventListener('change', (evt) => {
     case capacityNode.name: {
       const roomNumber = roomNumberNode.value;
       const capacityNumber = parseInt(capacityNode.value, 10);
-      capacityNode.setCustomValidity(roomsToCapacities[roomNumber].includes(capacityNumber) ? '' : 'Количество гостей не подходит количеству комнат');
+      capacityNode.setCustomValidity(RoomsToCapacities[roomNumber].includes(capacityNumber) ? '' : 'Количество гостей не подходит количеству комнат');
       break;
     }
   }
