@@ -1,0 +1,156 @@
+[33mcommit 980d71d65b57d7b3451bdc93a0cdb4c663815be2[m[33m ([m[1;36mHEAD -> [m[1;32mmodule8-task1[m[33m, [m[1;32mmodule7-task2[m[33m)[m
+Author: Денис <denis.belokopytov.ua@gmail.ua>
+Date:   Sun Jun 27 21:04:45 2021 +0300
+
+    Завел модуль form.js для перевода страницы в неактивное/активное состояние
+
+[33mcommit 285c6f0b2f10e80be31fa8916139a5ea04a2eec7[m[33m ([m[1;31morigin/module7-task1[m[33m, [m[1;32mmodule7-task1[m[33m)[m
+Author: Денис <denis.belokopytov.ua@gmail.ua>
+Date:   Sun Jun 27 19:00:16 2021 +0300
+
+    Отредактировал template-card.js, main.js, index.html
+
+[33mcommit 1e9b1911d685715037a780077c9bdb27d5ad8b91[m
+Author: Денис <denis.belokopytov.ua@gmail.ua>
+Date:   Mon Jun 21 21:17:26 2021 +0300
+
+    Создал модуль генерации разметки template-card.js; создал DOM-элементы; отрисовал DOM-элементы в блок #map-canvas; подключил модуль в index.html
+
+[33mcommit ecc47d6c1e2e402fc5fde54ff075f16816108fdd[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;31macademy/master[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: 9b0cff7 a2ca079
+Author: Keks <keksobot@users.noreply.github.com>
+Date:   Sun Jun 13 19:12:24 2021 +0300
+
+    Merge pull request #4 from heis-1/module5-task1
+
+[33mcommit a2ca0797a48c057d5950eca71e7b350b203b3ff0[m[33m ([m[1;31morigin/module5-task1[m[33m, [m[1;32mmodule5-task1[m[33m)[m
+Author: Денис <denis.belokopytov.ua@gmail.ua>
+Date:   Sun Jun 13 17:58:05 2021 +0300
+
+    Внёс изменения в index.html, main.js, util.js
+
+[33mcommit d4e5fccf72cc1397ea20dad09f99dc82349bf7d3[m
+Author: Денис <denis.belokopytov.ua@gmail.ua>
+Date:   Sun Jun 13 15:49:38 2021 +0300
+
+    Разделил код в main.js на отдельные модули; импортировал нужные модули в точку входа; точку входа подключил в index.html
+
+[33mcommit 9b0cff71d27637a4675903c0634363fdfdb4a131[m
+Merge: ad13b2a 4b4bc11
+Author: Keks <keksobot@users.noreply.github.com>
+Date:   Sun Jun 13 04:50:16 2021 +0300
+
+    Merge pull request #3 from heis-1/module4-task1
+
+[33mcommit 4b4bc1183b74175695861679104b74c56053c660[m[33m ([m[1;31morigin/module4-task1[m[33m, [m[1;32mmodule4-task1[m[33m)[m
+Author: Денис <denis.belokopytov.ua@gmail.ua>
+Date:   Sat Jun 12 22:18:14 2021 +0300
+
+    Отредактировал файл main.js
+
+[33mcommit dc5a3512a8e4f6ca24f51ab5c14eba29bb3e4322[m
+Author: Денис <denis.belokopytov.ua@gmail.ua>
+Date:   Sat Jun 12 21:47:56 2021 +0300
+
+    Указал полный путь к файлу main.js; в main.js написал необходимые функции; удалил папку utils
+
+[33mcommit 47c00ceceefe2349757f0c7ec779ebfd6b904320[m
+Author: Денис <denis.belokopytov.ua@gmail.ua>
+Date:   Sat Jun 12 17:49:53 2021 +0300
+
+    В main.js написал функции для создания массива(ДЗ не выполнено пока что).
+
+[33mcommit ad13b2a35e9b42a7a915d0023c9e102649a79074[m
+Author: Keks <keks@htmlacademy.ru>
+Date:   Mon Jun 7 19:31:20 2021 +0300
+
+    :package:
+
+[33mcommit 774d6ecebf04b27859d2fc4bad7ea2cf7f3abe96[m
+Merge: 76faa2f 78ed8c2
+Author: Keks <keksobot@users.noreply.github.com>
+Date:   Thu Jun 3 19:54:18 2021 +0300
+
+    Merge pull request #2 from heis-1/module2-task1
+
+[33mcommit 78ed8c22c0d5585c318ede1450a258e1ede6d93e[m[33m ([m[1;31morigin/module2-task1[m[33m, [m[1;32mmodule2-task1[m[33m)[m
+Author: Денис <denis.belokopytov.ua@gmail.ua>
+Date:   Thu Jun 3 19:47:15 2021 +0300
+
+    Отредактировал функции файла main.js
+
+[33mcommit 21d9ba6b92944f322788c20823f276d612d52149[m
+Author: Денис <denis.belokopytov.ua@gmail.ua>
+Date:   Thu Jun 3 19:39:51 2021 +0300
+
+    Внёс изменения в функции файла main.js
+
+[33mcommit 0850dbc6b8bb24af41c000787259034c5b72c8a7[m
+Author: Денис <denis.belokopytov.ua@gmail.ua>
+Date:   Thu Jun 3 18:43:28 2021 +0300
+
+    Внёс изменения в функцию, возвращающую случайное число с плавающей точкой
+
+[33mcommit 9993468c1f0bfe47b1436307d7af3abb22379ffa[m
+Author: Денис <denis.belokopytov.ua@gmail.ua>
+Date:   Wed Jun 2 22:52:43 2021 +0300
+
+    Подключил main.js. Добавил функции в main.js
+
+[33mcommit 58fc0fac17d2b528aa59a0de77ccbac20fb8b972[m
+Author: Денис <denis.belokopytov.ua@gmail.ua>
+Date:   Wed Jun 2 22:02:27 2021 +0300
+
+    Подключил main.js.и добавил функции в main.js
+
+[33mcommit 3d4f15616550bbf24f1640f8deba1d0dc2fae720[m
+Merge: e5573a7 6dd0e3f
+Author: Денис <denis.belokopytov.ua@gmail.ua>
+Date:   Wed Jun 2 22:02:27 2021 +0300
+
+    Подключил main.js. Добавил функции в main.js
+
+[33mcommit e5573a73ecb3d6f3209306bd92165f7f81783069[m
+Author: Денис <denis.belokopytov.ua@gmail.ua>
+Date:   Wed Jun 2 18:33:18 2021 +0300
+
+    Подключил файл main.js в index.html. Добавил две функции в файл main.js, ошибки исправил
+
+[33mcommit a271fa86455eff5f638c224fd57edfba72eb8a9c[m
+Author: Денис <denis.belokopytov.ua@gmail.ua>
+Date:   Tue Jun 1 16:50:16 2021 +0300
+
+    Подключил файл main.js в index.html. Добавил две функции в файл main.js, но код с ошибками
+
+[33mcommit 6dd0e3f038d0150846c26410dc885a82caeaa2ba[m
+Author: Денис <denis.belokopytov.ua@gmail.ua>
+Date:   Tue Jun 1 16:50:16 2021 +0300
+
+    Подключил файл main.js в index.html. Добавил две функции в файл main.js
+
+[33mcommit 76faa2f6718f572777685ee6f1fe5f187fb8c98c[m
+Merge: 6a8804a 40e093c
+Author: Keks <keksobot@users.noreply.github.com>
+Date:   Fri May 28 19:07:42 2021 +0300
+
+    Merge pull request #1 from heis-1/module1-task1
+
+[33mcommit 40e093cc0744b50a1b56c14625e11c1fe877f309[m[33m ([m[1;31morigin/module1-task1[m[33m, [m[1;32mmodule1-task1[m[33m)[m
+Author: Денис <denis.belokopytov.ua@gmail.ua>
+Date:   Fri May 28 19:01:16 2021 +0300
+
+    Добавил имя наставника
+
+[33mcommit b95a035a5acabc4453e5768ce745d0b5011fb9f7[m
+Author: heis-1 <84543298+heis-1@users.noreply.github.com>
+Date:   Fri May 28 12:55:24 2021 +0300
+
+    Update readme.md
+    
+    Indicated the name of the mentor
+
+[33mcommit 6a8804af5dd6f919c648310112aa169a62b64427[m
+Author: Keks <keks@htmlacademy.ru>
+Date:   Fri May 28 01:30:44 2021 +0300
+
+    :hatching_chick:

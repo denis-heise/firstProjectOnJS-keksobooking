@@ -5,6 +5,7 @@ import {getFilteredData} from './filter.js';
 const LAT_START = 35.68283;
 const LNG_START = 139.75945;
 const VIEW_ZOOM = 13;
+const RERENDER = 500;
 const WIDTH_MAIN_ICON = 52;
 const HEIGHT_MAIN_ICON = 52;
 const WIDTH_MAIN_ANCHOR = 26;
@@ -17,21 +18,22 @@ const TITLE_LAYER = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 const MAIN_ICON_URL = './img/main-pin.svg';
 const SIMILAR_ICON_URL = './img/pin.svg';
-const RERENDER = 500;
 const DEFAULT_AVATAR = './img/muffin-grey.svg';
-const address = document.querySelector('#address');
-const title = document.querySelector('#title');
-const price = document.querySelector('#price');
-const description = document.querySelector('#description');
-const timein = document.querySelector('#timein');
-const timeout = document.querySelector('#timeout');
-const roomNumber = document.querySelector('#room_number');
-const capacity = document.querySelector('#capacity');
-const features = document.querySelectorAll('.features__checkbox');
-const type = document.querySelector('#type');
-const filters = document.querySelector('.map__filters');
-const previewAvatar = document.querySelector('.ad-form-header__preview img');
+const addressNode = document.querySelector('#address');
+const titleNode = document.querySelector('#title');
+const priceNode = document.querySelector('#price');
+const descriptionNode = document.querySelector('#description');
+const timeinNode = document.querySelector('#timein');
+const timeoutNode = document.querySelector('#timeout');
+const roomNumberNode = document.querySelector('#room_number');
+const capacityNode = document.querySelector('#capacity');
+const featuresNodes = document.querySelectorAll('.features__checkbox');
+const typeNode = document.querySelector('#type');
+const filtersNode = document.querySelector('.map__filters');
+const previewAvatarNode = document.querySelector('.ad-form-header__preview img');
+const containerPhotosNode = document.querySelector('.ad-form__photo-container');
 let extractedData = [];
+
 // Перевожу старницу в неактивное состояние по умолчанию
 togglePageStatus(false);
 
@@ -71,12 +73,12 @@ const mainPinMarker = L.marker(
 mainPinMarker.addTo(map);
 
 // Указал координаты начального положения специальной метки
-address.value = `${LAT_START}, ${LNG_START}`;
+addressNode.value = `${LAT_START}, ${LNG_START}`;
 
 // Обработчик для получения координат
 mainPinMarker.addEventListener('moveend', (evt) => {
   const addressMarker = evt.target.getLatLng();
-  address.value = `${addressMarker.lat.toFixed(5)}, ${addressMarker.lng.toFixed(5)}`;
+  addressNode.value = `${addressMarker.lat.toFixed(5)}, ${addressMarker.lng.toFixed(5)}`;
 });
 
 // Метка похожего объявления
@@ -124,16 +126,14 @@ const getChangeProcess  = debounce(() => getMapFiltersChanges(), RERENDER);
 const getSuccess = (data) => {
   extractedData = data.slice();
   creatMap(extractedData);
-  filters.addEventListener('change', getChangeProcess );
+  filtersNode.addEventListener('change', getChangeProcess );
 };
 
 // Возвращаю метку и все заполненные поля в изначальное состояние
 const resetForm = (reset, run) => {
   reset.addEventListener(run, (evt) => {
-    const containerPhotos = document.querySelector('.ad-form__photo-container');
-    const previewPhotos = containerPhotos.querySelectorAll('.ad-form__photo');
     evt.preventDefault();
-    address.value = `${LAT_START}, ${LNG_START}`;
+    addressNode.value = `${LAT_START}, ${LNG_START}`;
     mainPinMarker.setLatLng({
       lat: LAT_START,
       lng: LNG_START,
@@ -142,27 +142,29 @@ const resetForm = (reset, run) => {
       lat: LAT_START,
       lng: LNG_START,
     }, VIEW_ZOOM);
-    title.value = '';
-    price.value = '';
-    price.placeholder = '1000';
-    description.value = '';
-    timein.value = '12:00';
-    timeout.value = '12:00';
-    capacity.value = '1';
-    roomNumber.value = '1';
-    type.value = 'flat';
-    features.forEach((item) => {
+    titleNode.value = '';
+    priceNode.value = '';
+    priceNode.placeholder = '1000';
+    descriptionNode.value = '';
+    timeinNode.value = '12:00';
+    timeoutNode.value = '12:00';
+    capacityNode.value = '1';
+    roomNumberNode.value = '1';
+    typeNode.value = 'flat';
+    featuresNodes.forEach((item) => {
       item.checked = false;
     });
-    previewAvatar.src = DEFAULT_AVATAR;
+    previewAvatarNode.src = DEFAULT_AVATAR;
 
-    previewPhotos.forEach((item) => {
+    const previewPhotosNode = containerPhotosNode.querySelectorAll('.ad-form__photo');
+    previewPhotosNode.forEach((item) => {
       item.remove();
     });
-    const divPhoto = document.createElement('div');
-    divPhoto.classList.add('ad-form__photo');
-    containerPhotos.appendChild(divPhoto);
+    const divPhotoNode = document.createElement('div');
+    divPhotoNode.classList.add('ad-form__photo');
+    containerPhotosNode.appendChild(divPhotoNode);
   });
 };
+
 
 export {getSuccess, resetForm};
