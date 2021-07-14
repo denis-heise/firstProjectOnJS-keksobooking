@@ -31,7 +31,7 @@ const RulesFiltration = {
 
 const getFilteredData = (data) => {
   const offers = new Array();
-  data.every((item) => {
+  data.filter((item) => {
     const result = filtersNodes.every((filter) => filter.value === VALUE_DEFAULT ? true : RulesFiltration[filter.id](item, filter));
     if (result) {
       offers.push(item);

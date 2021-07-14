@@ -6,6 +6,8 @@ const LAT_START = 35.68283;
 const LNG_START = 139.75945;
 const VIEW_ZOOM = 13;
 const RERENDER = 500;
+const NUMBER_OF_ADS = 10;
+const NUMBER_AFTER_POINT = 5;
 const WIDTH_MAIN_ICON = 52;
 const HEIGHT_MAIN_ICON = 52;
 const WIDTH_MAIN_ANCHOR = 26;
@@ -78,13 +80,13 @@ addressNode.value = `${LAT_START}, ${LNG_START}`;
 // Обработчик для получения координат
 mainPinMarker.addEventListener('moveend', (evt) => {
   const addressMarker = evt.target.getLatLng();
-  addressNode.value = `${addressMarker.lat.toFixed(5)}, ${addressMarker.lng.toFixed(5)}`;
+  addressNode.value = `${addressMarker.lat.toFixed(NUMBER_AFTER_POINT)}, ${addressMarker.lng.toFixed(NUMBER_AFTER_POINT)}`;
 });
 
 // Метка похожего объявления
 const markerGroup = L.layerGroup().addTo(map);
 function creatMap (offers) {
-  offers.forEach((point) => {
+  offers.slice(0, NUMBER_OF_ADS).forEach((point) => {
     const {lat, lng} = point.location;
     const icon = L.icon({
       iconUrl: SIMILAR_ICON_URL,
@@ -122,11 +124,12 @@ const getMapFiltersChanges = () => {
   markerGroup.clearLayers();
   creatMap(getFilteredData(extractedData));
 };
-const getChangeProcess  = debounce(() => getMapFiltersChanges(), RERENDER);
+const onMapFiltersChange  = debounce(() => getMapFiltersChanges(), RERENDER);
+
 const getSuccess = (data) => {
   extractedData = data.slice();
   creatMap(extractedData);
-  filtersNode.addEventListener('change', getChangeProcess );
+  filtersNode.addEventListener('change', onMapFiltersChange );
 };
 
 // Возвращаю метку и все заполненные поля в изначальное состояние
@@ -145,6 +148,7 @@ const resetForm = (reset, run) => {
     titleNode.value = '';
     priceNode.value = '';
     priceNode.placeholder = '1000';
+    priceNode.min = '1000';
     descriptionNode.value = '';
     timeinNode.value = '12:00';
     timeoutNode.value = '12:00';
@@ -167,4 +171,4 @@ const resetForm = (reset, run) => {
 };
 
 
-export {getSuccess, resetForm};
+export {creatMap, resetForm, getSuccess};
