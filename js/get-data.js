@@ -3,7 +3,6 @@ import {getSuccess} from './map.js';
 const URL_DATA = 'https://23.javascript.pages.academy/keksobooking/data';
 const TEXT_ERROR = 'Ошибка! Обновите страницу';
 const REFRESH_BUTTON = 'Закрыть';
-const NUMBER_OF_ADS = 10;
 const VALUE_DEFAULT = 'any';
 const housingTypeNode = document.querySelector('#housing-type');
 const housingPriceNode = document.querySelector('#housing-price');
@@ -16,25 +15,33 @@ const errorElement = templateNode.cloneNode(true);
 const mainNode = document.querySelector('main');
 const errorMessageNode = errorElement.querySelector('.error__message');
 const errorButtonNode = errorElement.querySelector('.error__button');
+const Keys = {
+  ESCAPE: 'Escape',
+  ESC: 'Esc',
+};
 
 // Сообщение об ошибке
 const createErrorMesage = () => {
   errorMessageNode.textContent = TEXT_ERROR;
   errorButtonNode.textContent = REFRESH_BUTTON;
   mainNode.appendChild(errorElement);
-  const closeErrorWindow = () => {
+  const onErrorWindowClose = (evt) => {
     errorElement.remove();
-    document.removeEventListener('click', closeErrorWindow);
+    document.removeEventListener('click', onErrorWindowClose);
+    if (evt.key === Keys.ESCAPE || evt.key === Keys.ESC) {
+      errorElement.remove();
+      document.removeEventListener('keydown', onErrorWindowClose);
+    }
   };
-  errorButtonNode.addEventListener('click', closeErrorWindow);
+  document.addEventListener('click', onErrorWindowClose);
+  document.addEventListener('keydown', onErrorWindowClose);
 };
 
 // Получаю данные с сервера и добавляю на карту
 fetch(URL_DATA)
   .then((response) => response.json())
   .then((data) => {
-    const dataOffers = data.slice(0, NUMBER_OF_ADS);
-    getSuccess(dataOffers);
+    getSuccess(data);
   })
   .catch(() =>{
     createErrorMesage();
@@ -54,8 +61,7 @@ const resetFilters = (reset, run) => {
     fetch(URL_DATA)
       .then((response) => response.json())
       .then((data) => {
-        const dataOffers = data.slice(0, NUMBER_OF_ADS);
-        getSuccess(dataOffers);
+        getSuccess(data);
       })
       .catch(() =>{
         createErrorMesage();
@@ -63,4 +69,4 @@ const resetFilters = (reset, run) => {
   });
 };
 
-export {createErrorMesage, resetFilters};
+export {createErrorMesage, resetFilters, Keys};

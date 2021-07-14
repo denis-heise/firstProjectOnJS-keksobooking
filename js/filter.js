@@ -1,4 +1,3 @@
-const NUMBER_ADS_FILTERED = 10;
 const VALUE_DEFAULT = 'any';
 const PriceFilterValues = {
   LOW: {
@@ -30,13 +29,9 @@ const RulesFiltration = {
 };
 
 const getFilteredData = (data) => {
-  const offers = new Array();
-  data.every((item) => {
-    const result = filtersNodes.every((filter) => filter.value === VALUE_DEFAULT ? true : RulesFiltration[filter.id](item, filter));
-    if (result) {
-      offers.push(item);
-    }
-    return offers.length < NUMBER_ADS_FILTERED;
+  const offers = data.filter((item) => {
+    const isSuitable = filtersNodes.every((filter) => filter.value === VALUE_DEFAULT ? true : RulesFiltration[filter.id](item, filter));
+    return isSuitable;
   });
   return offers;
 };

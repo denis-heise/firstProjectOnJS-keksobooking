@@ -1,11 +1,7 @@
-import {createErrorMesage, resetFilters} from './get-data.js';
+import {createErrorMesage, resetFilters, Keys} from './get-data.js';
 import {resetForm} from './map.js';
 
 const URL_SERVER = 'https://23.javascript.pages.academy/keksobooking';
-const Keys = {
-  ESCAPE: 'Escape',
-  ESC: 'Esc',
-};
 const addFormNode = document.querySelector('.ad-form');
 const mainNode = document.querySelector('main');
 const resetButtonNode = document.querySelector('.ad-form__reset');
@@ -37,27 +33,27 @@ const sendForm = (success) => {
 };
 
 // Функции закрытия сообщения об успешной
-const closeEscSuccessMessage = (evt) => {
+const onSuccessMessageKeydown = (evt) => {
   const popUpNode = mainNode.querySelector('.success');
   evt.preventDefault();
   if (evt.key === Keys.ESCAPE || evt.key === Keys.ESC) {
     popUpNode.remove();
+    document.removeEventListener('keydown', onSuccessMessageKeydown);
   }
-  document.removeEventListener('keydown', closeEscSuccessMessage);
 };
 
-const closeSuccessMessage = () => {
+const onSuccessMessageClick = () => {
   const popUpNode = mainNode.querySelector('.success');
   popUpNode.remove();
-  document.removeEventListener('click', closeSuccessMessage);
-  document.removeEventListener('keydown', closeEscSuccessMessage);
+  successNode.removeEventListener('click', onSuccessMessageClick);
+  document.removeEventListener('keydown', onSuccessMessageKeydown);
 };
 
 // Сообщение об успешной отправке данных
 function createSuccessMessage () {
   mainNode.appendChild(successNode);
-  document.addEventListener('keydown', closeEscSuccessMessage);
-  document.addEventListener('click', closeSuccessMessage);
+  document.addEventListener('keydown', onSuccessMessageKeydown);
+  successNode.addEventListener('click', onSuccessMessageClick);
 }
 
 sendForm(createSuccessMessage);
